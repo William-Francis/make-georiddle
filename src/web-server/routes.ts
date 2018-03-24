@@ -11,21 +11,10 @@ let locationRiddles = {
 router.get("/", async (ctx: any, next: any) => {
   ctx.body = "Hello Riddle Game!";
 });
+  db
+  .catch(error => {
+    console.log(error); // print the error;
 
 router.post("/visitmerchant", async (ctx: any, next: any) => {
   console.log("ctx.request.body", ctx.request.body);
-  if (!cards[ctx.request.body.card]) {
-    cards[ctx.request.body.card] = [];
-  }
-  if (locationRiddles[ctx.request.body.merchant]) {
-    ctx.body = locationRiddles[ctx.request.body.merchant];
-    if (cards[ctx.request.body.card].indexOf(ctx.request.body.merchant) == -1) {
-      cards[ctx.request.body.card].push(ctx.request.body.merchant);
-    }
-  } else {
-    ctx.body = "No riddle, go to another shop (start at a place with wool)";
-  }
-
-  console.log("cards", cards);
-  console.log("merchants", merchants);
 });
