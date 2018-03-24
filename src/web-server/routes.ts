@@ -66,7 +66,8 @@ function saveRiddle(card,merchant)
 }
 
 router.post("/visitmerchant", async (ctx: any, next: any) => {
-  const returnMessage = await getRiddle(ctx.request.body.merchant);
-  saveRiddle(ctx.request.body.card,ctx.request.body.merchant);
+  console.log(ctx.request.body.transaction);
+  const returnMessage = await getRiddle(ctx.request.body.merchant.toLowerCase());
+  saveRiddle(ctx.request.body.card,ctx.request.body.merchant.toLowerCase());
   ctx.body = returnMessage;
 });
